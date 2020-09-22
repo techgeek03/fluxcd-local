@@ -10,10 +10,13 @@ metadata:
 spec:
   releaseName: dapr
   chart:
-    repository: https://daprio.azurecr.io/helm/v1/repo
-    name: dapr
+    git: git@github.com:dapr/dapr
+    ref: master
+    path: charts/dapr
   values:
     global:
+      registry: docker.io/daprio
+      tag: "0.10.0"
       logAsJson: true
       ha:
         enabled: true
