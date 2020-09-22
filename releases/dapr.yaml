@@ -10,7 +10,7 @@ metadata:
 spec:
   releaseName: dapr
   chart:
-    git: git@github.com:dapr/dapr
+    git: https://github.com/dapr/dapr.git
     ref: master
     path: charts/dapr
   values:
