@@ -1,0 +1,28 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: dapr
+  namespace: dapr-system
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.chart-image: semver:~0.10
+spec:
+  releaseName: dapr
+  chart:
+    repository: https://daprio.azurecr.io/helm/v1/repo
+    name: dapr
+  values:
+    global:
+      logAsJson: true
+      ha:
+        enabled: true
+        replicaCount: 3
+      prometheus:
+        enabled: true
+        port: 9090
+      mtls:
+        enabled: true
+        workloadCertTTL: 24h
+        allowedClockSkew: 15m
+      daprControlPlaneOs: linux
